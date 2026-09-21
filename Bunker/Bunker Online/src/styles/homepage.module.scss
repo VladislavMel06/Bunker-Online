@@ -1,0 +1,60 @@
+@use "./mixins.scss" as m;
+$border: #ffe100;
+$vw-value: 1vw;
+$vh-value: 1vh;
+$index: calc(#{$vw-value} + #{$vh-value});
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.MainWrap{
+    height: 135vh;
+    @include m.flex();
+    justify-content: center;
+    text-align: center;
+    @include m.backgroundImage('../img/sity.jpg');
+    position: relative;
+    background-size: 1300px 700px;
+    background-attachment: scroll; 
+    background-position: center top; 
+    background-repeat: no-repeat; 
+}
+
+
+.AboutGame{
+    width: 50%;
+    margin-top: calc($index * 5);
+    h1{
+        width: calc($index * 6);  
+        height: calc($index * 6); 
+        border-radius: 50%; 
+        background-color: transparent; 
+        color: #333;
+        border: 2px solid white; 
+        transition: color 0.5s ease-in;
+        @include m.font(calc($index * 5.0));
+        text-decoration: none;
+        transition: color 0.5s ease-in;
+    }
+
+    h2{
+        @include m.font(calc($index * 2.0));
+    }
+
+    p{
+        margin-top: calc($index * 1.2);
+        @include m.font2(calc($index * 1.5));
+    }
+}
+
+.HeadAboutGame{
+    width: 100%;
+    @include m.flex();
+    justify-content: center;
+    align-items: center;
+}
+

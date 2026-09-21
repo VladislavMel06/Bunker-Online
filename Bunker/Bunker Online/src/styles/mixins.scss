@@ -1,0 +1,111 @@
+$border: #ffe100;
+$vw-value: 1vw;
+$vh-value: 1vh;
+$index: calc(#{$vw-value} + #{$vh-value});
+$font: "Rubik Distressed", system-ui;
+$font2: "Underdog", system-ui;
+
+.rubik-distressed-regular {
+  font-family: $font;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.underdog-regular {
+  font-family: $font2;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font($size) {
+  font-size: $size;
+  font-family: $font;
+  color: white; 
+  font-style: normal;
+  font-weight: 400;
+}
+
+
+@mixin font2($size) {
+  font-size: $size;
+  font-family: $font2;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin flex() {
+  display: flex;
+  justify-content: space-between; 
+}
+
+@mixin margins($top, $left, $right) {
+  margin-top: calc($index * $top);
+  margin-left: calc($index * $left);
+  margin-right: calc($index * $right);
+}
+
+@mixin button($fontSize, $height, $width) {
+  @include font2(calc($index * $fontSize));
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: $border;
+  transition: color 0.5s ease-out;
+  padding: $height $width;
+}
+
+@mixin backgroundImage($image-url){
+  background-image: url($image-url);
+  background-size: cover; 
+  background-position: center center; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+  object-fit: fill;
+}
+
+//функция для перевода px - rem
+$base-font-size: 16px;
+
+@function pxToRem($px-value) {
+  @if type-of($px-value) != 'number' 
+  {
+    @error "Значение '#{$px-value}' должно быть числом (пикселями).";
+  }
+
+  $rem-value: ($px-value / $base-font-size) * 1rem;
+  @return $rem-value;
+}
+
+
+@mixin bunker-noise {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05; 
+    pointer-events: none;
+    z-index: 10;
+  }
+}
+
+@mixin glitch-hover {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    animation: glitch-anim 0.3s infinite;
+    text-shadow: 2px 0 #ff00c1, -2px 0 #00fff9; 
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes glitch-anim {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}

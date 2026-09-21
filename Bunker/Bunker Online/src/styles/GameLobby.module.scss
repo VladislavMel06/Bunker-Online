@@ -1,0 +1,379 @@
+// Переменные стиля "Бункер"
+$term-green: #00ff00;
+$term-bg: #0a0a0a;
+$term-border: rgba(0, 255, 0, 0.3);
+$term-orange: #ffaa00;
+$term-red: #ff4d4d;
+$font-mono: 'Courier New', Courier, monospace;
+
+.gameWrapper {
+  background-color: $term-bg;
+  color: $term-green;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: $font-mono;
+  text-transform: uppercase;
+  overflow-x: hidden;
+}
+
+.gameHeader {
+  border-bottom: 2px solid $term-green;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  text-align: center;
+
+  h1 { 
+    font-size: 1.4rem; 
+    letter-spacing: 2px;
+    margin: 0;
+  }
+
+  .turnIndicator {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #fff;
+    height: 20px;
+  }
+}
+
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.playerCard {
+  background: rgba(0, 255, 0, 0.03);
+  border: 1px solid $term-border;
+  padding: 15px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+
+
+  &.myCard {
+    border: 1px solid $term-green;
+    box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.1);
+    background: rgba(0, 255, 0, 0.07);
+  }
+
+
+  &.canNominate {
+    cursor: crosshair;
+    &:hover {
+      border-color: $term-orange;
+      box-shadow: 0 0 20px rgba(255, 170, 0, 0.3);
+    }
+  }
+
+
+  &.canVote {
+    cursor: pointer;
+    &:hover {
+      border-color: $term-red;
+      background: rgba(255, 77, 77, 0.1);
+      box-shadow: 0 0 20px rgba(255, 77, 77, 0.5);
+    }
+  }
+
+
+  &.targetCard {
+    border: 2px solid $term-red;
+    animation: pulse-red 2s infinite;
+  }
+
+  .nickname {
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid $term-border;
+    padding-bottom: 5px;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .leaderTag {
+    color: #ffcc00;
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .warningTag {
+    background: $term-red;
+    color: #000;
+    font-size: 0.6rem;
+    text-align: center;
+    padding: 2px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+}
+
+.characterData {
+  .charLine {
+    margin: 4px 0;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 6px;
+    border-radius: 3px;
+    transition: all 0.2s;
+
+    span:first-child { opacity: 0.6; font-size: 0.75rem; }
+    span:nth-child(2) { color: #fff; }
+    &.clickableChar {
+      cursor: pointer;
+      border: 1px dashed $term-green;
+      &:hover {
+        background: rgba(0, 255, 0, 0.2);
+        color: #fff;
+      }
+    }
+
+    &.openedChar {
+      border: none;
+      background: rgba(255, 170, 0, 0.1);
+      
+      span:nth-child(2) { 
+        color: $term-orange; 
+      }
+    }
+  }
+}
+
+.openedMark {
+  font-size: 0.6rem;
+  color: $term-orange;
+  margin-left: 5px;
+}
+
+
+.skipBtn {
+  background: transparent;
+  border: 1px solid $term-green;
+  color: $term-green;
+  padding: 8px 20px;
+  font-family: $font-mono;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s;
+
+  &:hover {
+    background: $term-green;
+    color: #000;
+    box-shadow: 0 0 15px $term-green;
+  }
+}
+
+.gameFooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #000;
+  border-top: 1px solid $term-border;
+  padding: 10px 20px;
+  z-index: 100;
+}
+
+.terminalStatus {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  letter-spacing: 1px;
+
+  &.errorColor {
+    color: $term-red;
+    opacity: 1;
+    text-shadow: 0 0 5px $term-red;
+  }
+}
+
+
+.blink {
+  animation: blink-animation 1s steps(2, start) infinite;
+}
+
+@keyframes blink-animation {
+  to { visibility: hidden; }
+}
+
+@keyframes pulse-red {
+  0% { border-color: $term-red; }
+  50% { border-color: transparent; }
+  100% { border-color: $term-red; }
+}
+
+.mainLayout {
+  padding-bottom: 80px;
+}
+
+
+
+.leaving {
+    animation: slideOut 1s ease forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        max-height: 500px;
+        margin: 10px;
+        padding: 15px;
+    }
+    30% {
+        opacity: 0.7;
+        transform: translateX(-20px) scale(0.95);
+        background: rgba(255, 0, 0, 0.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%) scale(0.8);
+        max-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: none;
+    }
+}
+
+.eliminatedCard {
+    opacity: 0.5;
+    filter: grayscale(80%);
+    pointer-events: none; 
+    border: 2px solid #ff0000;
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.eliminatedTag {
+    color: #ff0000;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: blink 0.5s infinite;
+}
+
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modalContent {
+    background: #1a1a1a;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+}
+
+.modalTitle {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.resultSection {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+}
+
+.survivorsList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.survivorName {
+    font-size: 18px;
+    padding: 10px;
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+}
+
+.allPlayersSection {
+    margin-bottom: 20px;
+}
+
+.playersGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.resultPlayerCard {
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.survivorCard {
+    border-color: #00ff00;
+    background: rgba(0, 255, 0, 0.05);
+}
+
+.eliminatedCard {
+    border-color: #ff0000;
+    background: rgba(255, 0, 0, 0.05);
+}
+
+.resultPlayerName {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.resultPlayerChars {
+    font-size: 12px;
+}
+
+.resultPlayerChars p {
+    margin: 3px 0;
+    color: #999;
+}
+
+.exitButton {
+    width: 100%;
+    padding: 15px;
+    background: #00ff00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s;
+}
+
+.exitButton:hover {
+    background: #00cc00;
+    transform: scale(1.02);
+}

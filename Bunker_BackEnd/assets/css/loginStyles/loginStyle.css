@@ -1,0 +1,185 @@
+.rubik-distressed-regular {
+  font-family: "Rubik Distressed", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.underdog-regular {
+  font-family: "Underdog", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik-distressed-regular {
+  font-family: "Rubik Distressed", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.underdog-regular {
+  font-family: "Underdog", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.hero-content {
+  font-size: calc((1vw + 1vh) * 2);
+  font-family: "Rubik Distressed", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  margin-top: calc((1vw + 1vh) * 10);
+  position: relative;
+  display: inline-block;
+}
+.hero-content input[type=text], .hero-content input[type=password] {
+  width: calc((1vw + 1vh) * 30);
+  padding: 15px 40px 15px 10px;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  font-size: calc((1vw + 1vh) * 1.2);
+  font-family: "Underdog", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  box-sizing: border-box;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+  margin-bottom: calc((1vw + 1vh) * 1);
+  padding-right: 40px;
+  box-sizing: border-box;
+}
+.hero-content input[type=text]:hover, .hero-content input[type=password]:hover {
+  border-color: #d8b81b;
+  box-shadow: 0 0 20px #d8b81b;
+}
+.hero-content input[type=text]:focus, .hero-content input[type=password]:focus {
+  border-color: rgb(125.3333333333, 106.7654320988, 15.6666666667);
+  box-shadow: 0 0 35px rgb(125.3333333333, 106.7654320988, 15.6666666667);
+}
+.hero-content input[type=text]::-moz-placeholder, .hero-content input[type=password]::-moz-placeholder {
+  color: #ccc;
+}
+.hero-content input[type=text]::placeholder, .hero-content input[type=password]::placeholder {
+  color: #ccc;
+}
+.hero-content i {
+  margin-left: calc((1vw + 1vh) * 27.5);
+  margin-top: calc((1vw + 1vh) * 0.5);
+  position: absolute;
+  pointer-events: none;
+  color: #ccc;
+}
+.hero-content .error {
+  margin-bottom: calc((1vw + 1vh) * 1.7);
+  color: #af197d;
+}
+.hero-content button {
+  border: none;
+  border-radius: 7px;
+  background-color: #ffd918;
+  font-size: calc((1vw + 1vh) * 1.4);
+  font-family: "Underdog", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  width: calc((1vw + 1vh) * 14);
+  height: calc((1vw + 1vh) * 3);
+  box-shadow: 0 0 35px rgb(125.3333333333, 106.7654320988, 15.6666666667);
+  transition: all 0.5s ease-in-out;
+  color: #000;
+}
+.hero-content button:hover {
+  cursor: pointer;
+  background-color: black;
+  color: #ffd918;
+  transform: translateY(-5px);
+}
+.hero-content a {
+  font-size: calc((1vw + 1vh) * 1.5);
+  font-family: "Underdog", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.7s ease-in-out;
+}
+.hero-content a:hover {
+  font-size: calc((1vw + 1vh) * 1.7);
+  font-family: "Underdog", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  cursor: pointer;
+  color: #ffd918;
+}
+
+.logo {
+  font-size: calc((1vw + 1vh) * 2);
+  font-family: "Rubik Distressed", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  position: absolute;
+  background-position: center;
+  top: calc((1vw + 1vh) * 3);
+  z-index: 1;
+}
+
+body {
+  background-color: #000;
+}
+
+.layers {
+  perspective: 62.5rem;
+  overflow: hidden;
+}
+
+.layers__container {
+  height: 100vh;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--move-y)) rotateY(var(--move-x));
+  will-change: transform;
+  transition: transform 1.5s cubic-bezier(0.05, 0.5, 0, 1);
+}
+
+.layers__item {
+  position: absolute;
+  inset: -5vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layer-1 {
+  transform: translateZ(-3.4375rem) scale(1.06);
+}
+
+.layer-2 {
+  transform: translateZ(5rem) scale(0.5);
+}
+
+.layer-3 {
+  transform: translateZ(11.25rem) scale(0.99);
+}
+
+.layer-4 {
+  transform: translateZ(23.75rem) scale(0.6);
+}
+
+.layer-3, .layer-4 {
+  pointer-events: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}/*# sourceMappingURL=loginStyle.css.map */

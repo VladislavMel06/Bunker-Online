@@ -1,0 +1,149 @@
+@import "../mixins/mixins.scss";
+
+$trans: 1.5s cubic-bezier(.05, .5, 0, 1);
+$golding: #d8b81b;
+$lightgold: #ffd918;
+
+.hero-content{
+    @include font(calc($index * 2));
+    text-align: center;
+    margin-top: calc($index * 10);
+
+    position: relative;
+    display: inline-block;
+
+    input[type="text"], input[type="password"] {
+        width: calc($index * 30);
+        padding: 15px 40px 15px 10px;
+        background-color: #1a1a1a;
+        color: #fff;
+        border: 3px solid transparent; 
+        border-radius: 10px;
+        @include font2(calc($index * 1.2));
+        box-sizing: border-box;
+        outline: none;
+        transition: box-shadow 0.3s ease; 
+        margin-bottom: calc($index * 1);
+        padding-right: 40px; 
+        box-sizing: border-box
+    }
+
+    input[type="text"]:hover, input[type="password"]:hover {
+        border-color: $golding; 
+        box-shadow: 0 0 20px $golding; 
+    }
+
+    input[type="text"]:focus, input[type="password"]:focus {
+        border-color: darken($golding, 20); 
+        box-shadow: 0 0 35px darken($golding, 20); 
+    }
+
+    input[type="text"]::placeholder, input[type="password"]::placeholder {
+        color: #ccc;
+    }
+
+    $top: calc($index * 0.5);
+    i{
+        margin-left: calc($index * 27.5);
+        margin-top: $top;
+        position: absolute;
+        pointer-events: none; 
+        color: #ccc;
+    }
+
+    .error{
+        margin-bottom: calc($index * 1.7);
+        color: #af197d;
+    }
+
+    button{
+        border: none;
+        border-radius: 7px;
+        background-color: $lightgold;
+        @include font2(calc($index * 1.4));
+        width: calc($index * 14);
+        height: calc($index * 3);
+        box-shadow: 0 0 35px darken($golding, 20); 
+        transition: all 0.5s ease-in-out;
+        color: #000;
+    }
+
+    button:hover{
+        cursor: pointer;
+        background-color: black;
+        color: $lightgold;
+        transform: translateY(-5px);
+    }
+
+    a{
+        @include font2(calc($index * 1.5));
+        color: #ccc;
+        text-decoration: none;
+        transition: all 0.7s ease-in-out;
+    }
+    
+    a:hover{
+        @include font2(calc($index * 1.7));
+        cursor: pointer;
+        color: $lightgold;
+    }
+}
+
+.logo {
+    @include font(calc($index * 2));
+    position: absolute;
+    background-position: center;
+    top: (calc($index * 3));
+    z-index: 1;
+}
+
+body{
+    background-color: #000;
+}
+
+.layers{
+    perspective: pxToRem(1000px);
+    overflow: hidden;
+}
+
+.layers__container{
+    height: 100vh;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--move-y)) rotateY(var(--move-x));
+    will-change: transform;
+    transition: transform $trans;
+}
+
+.layers__item{
+    position: absolute;
+    inset: -5vw;
+    background: {
+        size: cover;
+        repeat: no-repeat;
+        position: center;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.layer-1{
+    transform: translateZ(pxToRem(-55px)) scale(1.06);
+}
+
+.layer-2{
+    transform: translateZ(pxToRem(80px)) scale(.5);
+}
+
+.layer-3{
+    transform: translateZ(pxToRem(180px))scale(.99);
+}
+
+.layer-4{
+    transform: translateZ(pxToRem(380px))scale(.6);
+}
+
+.layer-3, .layer-4{
+    pointer-events: none;
+}

@@ -1,0 +1,9 @@
+@import "../mixins/mixins.scss";
+@import "../paralaxEff/paralax.scss";
+
+//общая натсройка стр
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

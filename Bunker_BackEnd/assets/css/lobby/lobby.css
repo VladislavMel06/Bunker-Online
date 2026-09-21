@@ -1,0 +1,325 @@
+.rubik-distressed-regular {
+  font-family: "Rubik Distressed", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.underdog-regular {
+  font-family: "Underdog", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("http://localhost/AbyssCup/assets/img/sity.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -o-object-fit: fill;
+     object-fit: fill;
+  z-index: -1;
+}
+
+.test {
+  color: white;
+}
+
+.head-game-wrap {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.head-game {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  background-color: rgba(48, 46, 46, 0.8);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 7px;
+}
+
+.round-time {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 10%;
+  font-size: calc((1vw + 1vh) * 2.5);
+  font-family: "Rubik Distressed", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  margin: auto, 0px auto;
+  padding: 1rem;
+  margin-top: 2rem;
+  background-color: transparent;
+  margin-left: 5rem;
+}
+
+.title {
+  font-size: calc((1vw + 1vh) * 2.5);
+  font-family: "Rubik Distressed", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  background-color: transparent;
+}
+
+.main-wrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.player-card-wrap {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  background-color: rgba(48, 46, 46, 0.7);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+}
+
+.skip-btn {
+  margin-top: calc((1vw + 1vh) * 0.5);
+  font-size: calc((1vw + 1vh) * 1);
+  font-family: "Underdog", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: #ffe100;
+  transition: color 0.5s ease-out;
+  padding: calc((1vw + 1vh) * 0.5) calc((1vw + 1vh) * 0.5);
+  color: #ffe100;
+  transition: color 0.7s ease-in-out;
+  margin-bottom: 2rem;
+  display: none;
+}
+
+.skip-btn:hover {
+  background-color: #ffe100;
+  color: black;
+}
+
+.player-card-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.player-card {
+  display: flex;
+  border: 6px solid #9c541c;
+  border-radius: 7px;
+  width: calc(33% - 0px);
+  margin-bottom: 5rem;
+  height: 30rem;
+  flex-direction: column;
+}
+.player-card h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -1.3rem;
+  position: absolute;
+  font-size: calc((1vw + 1vh) * 1.2);
+  font-family: "Rubik Distressed", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  width: calc(33% - 0px);
+  background-color: #000000;
+  border-radius: 15%;
+}
+
+.card__content {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 1rem;
+  font-size: 2rem;
+  color: white;
+  font-size: calc((1vw + 1vh) * 1);
+  font-family: "Underdog", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  width: calc(80% - 10px);
+  white-space: normal;
+}
+.card__content p:hover {
+  cursor: pointer;
+  color: rgb(218, 17, 171);
+}
+.card__content p:hover .hide {
+  display: flex;
+}
+
+.hide {
+  display: none;
+  font-size: calc((1vw + 1vh) * 0.5);
+  font-family: "Underdog", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.freidnBtn {
+  display: flex;
+  font-size: calc((1vw + 1vh) * 1);
+  font-family: "Underdog", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: #ffe100;
+  transition: color 0.5s ease-out;
+  padding: calc((1vw + 1vh) * 0.5) calc((1vw + 1vh) * 0.5);
+  background-color: #FFA000;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 10rem;
+}
+
+.freidnBtn:hover {
+  background-color: #FFB300;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.modal-card {
+  display: flex;
+  width: 80%;
+  max-width: 550px;
+  height: 70%;
+  border-radius: 15px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #302e2e;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  color: #ffaa00;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  background-color: #302e2e;
+  justify-content: space-between;
+  font-size: calc((1vw + 1vh) * 1.2);
+  font-family: "Underdog", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.close-button {
+  cursor: pointer;
+  font-size: 2rem;
+  color: #ffffff;
+  line-height: 1;
+  background-color: #302e2e;
+}
+
+.close-button:hover {
+  color: #d41212;
+}
+
+.aboutFriend {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  background-color: #302e2e;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: calc((1vw + 1vh) * 1);
+  font-family: "Underdog", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.player-name {
+  color: #00ff00;
+  font-weight: bold;
+  background-color: #302e2e;
+}
+
+.description-text {
+  color: #632d2d;
+  background-color: #302e2e;
+}
+
+.invite-button {
+  font-size: calc((1vw + 1vh) * 0.5);
+  font-family: "Underdog", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: #ffe100;
+  transition: color 0.5s ease-out;
+  padding: calc((1vw + 1vh) * 0.5) calc((1vw + 1vh) * 0.5);
+  font-size: calc((1vw + 1vh) * 0.5);
+  font-family: "Underdog", system-ui;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+  background-color: #FFA000;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+}
+
+.invite-button:hover {
+  background-color: #FFB300;
+}/*# sourceMappingURL=lobby.css.map */

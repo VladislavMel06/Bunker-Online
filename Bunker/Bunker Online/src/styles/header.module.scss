@@ -1,0 +1,63 @@
+@use "./mixins.scss" as m;
+
+$vw-value: 1vw;
+$vh-value: 1vh;
+$index: calc(#{$vw-value} + #{$vh-value});
+$hover: #ffe100;
+
+.headerWrap{
+    width: 100%;
+    height: calc($index * 4);
+    @include m.flex();
+    background-color: black;
+    box-shadow: 0 0 100px black; 
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0px 0px 30px rgba(0, 0, 0, 1));
+}
+
+.headerLogo{
+    @include m.margins(0.5, 1.2, 0);
+    @include m.font(calc($index * 2.2));
+    @include m.flex();
+    flex-direction: row;
+
+    a{
+        color: white;
+        text-decoration: none;
+        transition: color 0.5s ease;
+    }
+
+    a:hover{
+        color: $hover;
+    }
+}
+
+.parallelogram{
+    @include m.margins(0.5, 1.2, 0);
+    @include m.font(calc($index * 2.5));
+    @include m.flex();
+}
+
+.headerContent{
+    width: 65%;
+    @include m.margins(1.5, 0, 1.2);
+
+    .headerLinkList{
+        @include m.flex();
+        flex-direction: row; 
+        list-style: none; 
+        
+
+        a{
+            @include m.font2(calc($index * 1.2));
+            text-decoration: none;
+            transition: color 0.5s ease-in;
+        }
+
+        a:hover{
+            color: $hover;
+        }
+    }
+}
+

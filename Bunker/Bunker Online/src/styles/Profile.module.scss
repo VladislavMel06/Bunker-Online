@@ -1,0 +1,340 @@
+@use "./mixins.scss" as m;
+
+$folder-color: #c2a67a; 
+$paper-color: #f4ecd8;  
+$text-color: #2c2c2c;
+
+
+.Wrap{
+    min-height: 100vh;
+    background-image: url('../img/bgp2.jpg'); 
+    background-size: cover;  
+    background-position: center; 
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+
+}
+
+.dossierFolder{
+    position: relative;
+    width: 70%;
+    background-color: #4a2f1d;
+    @include m.backgroundImage('../img/leatherd3.jpg');
+    background-repeat: repeat; 
+    background-attachment: local; 
+    background-size: 200px; 
+    padding: 20px 15px 15px 15px;
+    border-radius: 4px 20px 4px 4px;
+    box-shadow: 10px 10px 25px rgba(0,0,0,0.5);
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 4rem;
+    @include m.bunker-noise;
+    span{font-size: 3rem}
+    box-shadow: 
+    inset 0 0 10px rgba(0,0,0,0.5), 
+    10px 10px 25px rgba(0,0,0,0.5);
+
+
+    .dossierTab{
+        position: absolute;
+        top: -25px;
+        left: 0;
+        background: $folder-color;
+        padding: 5px 20px;
+        border-radius: 10px 10px 0 0;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    
+    .dossierContent{
+        
+        background: $paper-color;
+        padding: 30px;
+        min-height: 500px;
+        border: 1px solid rgba(0,0,0,0.1);
+        position: relative;
+        overflow: hidden;
+    
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            @include m.backgroundImage('../img/paper.jpg');
+            pointer-events: none;
+            opacity: 0.5;
+        }
+    }
+
+    .stampClassified{
+        position: absolute;
+        top: 20px;
+        right: -10px;
+        border: 3px solid #8b0000;
+        color: #8b0000;
+        padding: 5px 15px;
+        font-weight: 900;
+        transform: rotate(15deg);
+        opacity: 0.7;
+        border-radius: 4px;
+    }
+
+    .photoPlaceholder{
+        width: 120px;
+        height: 150px;
+        background: #ddd;
+        border: 2px solid #555;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        font-size: 10px;
+        margin-bottom: 20px;
+        filter: sepia(1);
+            span{font-size: 1rem}
+    }
+
+    .statLine {
+        margin-bottom: 15px;
+        border-bottom: 1px dashed #999;
+        display: flex;
+        justify-content: space-between;
+    .label { font-weight: bold; font-size: 4rem;}
+    .valueHighlight { color: #8b0000; font-weight: bold; }
+  }
+}
+$term-green: #33ff33;
+$term-bg: #0a0a0a;
+
+.terminalContainer {
+   width: 70%;
+
+   @include m.backgroundImage('../img/terminal.jpg');
+   background-repeat: repeat; 
+
+  border: 12px solid #333;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+  color: $term-green;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.terminalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
+  .navBtn {
+    background: transparent;
+    color: $term-green;
+    cursor: pointer;
+    padding: 5px 15px;
+    font-weight: bold;
+    transition: all 0.2s;
+    border: none;
+    
+    &:hover {
+      background: $term-green;
+      color: black;
+    }
+  }
+
+  .terminalTitle {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px $term-green;
+  }
+}
+
+.terminalScreen {
+  background: transparent;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+
+
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 3px, 2px 100%;
+    pointer-events: none;
+  }
+
+  .scanline {
+    width: 100%;
+    height: 2px;
+    background: rgba(51, 255, 51, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: scanlineAnim 4s linear infinite;
+  }
+}
+
+.userRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(51, 255, 51, 0.2);
+  
+  .statusOnline { color: $term-green; font-size: 0.8rem; }
+  .statusOffline { color: #d5cdcd; font-size: 0.8rem; }
+}
+
+.terminalInput {
+  background: rgba(51, 255, 51, 0.05);
+  border: 1px solid $term-green;
+  color: $term-green;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  outline: none;
+  font-family: inherit;
+  &::placeholder { color: rgba(51, 255, 51, 0.3); }
+}
+
+.actionBtn {
+  background: transparent;
+  color: $term-green;
+  padding: 2px 8px;
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  border: none;
+  &:hover { background: $term-green; color: black; }
+}
+
+.addBtn {
+  background: transparent;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  cursor: pointer;
+  padding: 2px 10px;
+  transition: all 0.3s;
+
+  &:hover {
+    background: #00ff00;
+    color: #000;
+  }
+}
+
+.terminalStatus {
+  font-size: 0.7rem;
+  margin-top: 10px;
+  opacity: 0.6;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+
+    
+  &.errorColor {
+    color: #ff3333; 
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(255, 51, 51, 0.7);
+    animation: glitch 0.2s ease-in-out; 
+    font-size: 1rem;
+  }
+}
+
+.successColor {
+  color: #00ccff; 
+  opacity: 1;
+}
+
+
+.outgoingSection {
+    margin-top: 20px;
+
+  .statusLabel {
+    color: #ffaa00; 
+    font-size: 0.75rem;
+    margin-bottom: 5px;
+  }
+
+  .userRowMini {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    padding: 3px 0;
+    border-left: 2px solid #ffaa00;
+    padding-left: 10px;
+    margin-bottom: 5px;
+  }
+
+  .cancelBtn {
+    background: transparent;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    font-size: 0.7rem;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+.divider {
+  color: rgb(0, 255, 0);
+  margin: 10px 0;
+}
+
+.acceptBtn {
+  background: transparent;
+  border: none;
+  color: #00ff00;
+  margin-right: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  &:hover { text-shadow: 0 0 8px #00ff00; }
+}
+
+.declineBtn {
+  background: transparent;
+  border: none;
+  color: #ff4d4d;
+  cursor: pointer;
+  &:hover { text-shadow: 0 0 8px #ff4d4d; }
+}
+
+
+
+.friendStatusWrap {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.removeFriendBtn {
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  color: rgba(255, 77, 77, 0.838);
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #ff4d4d; 
+    text-shadow: 0 0 5px rgba(255, 77, 77, 0.8);
+    transform: scale(1.1);
+  }
+}
+
+@keyframes scanlineAnim {
+  0% { top: 0; }
+  100% { top: 100%; }
+}

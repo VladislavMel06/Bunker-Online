@@ -1,0 +1,78 @@
+$border: #ffe100;
+$vw-value: 1vw;
+$vh-value: 1vh;
+$index: calc(#{$vw-value} + #{$vh-value});
+
+$font: "Rubik Distressed", system-ui;
+$font2: "Underdog", system-ui;
+
+.rubik-distressed-regular {
+  font-family: $font;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.underdog-regular {
+  font-family: $font2;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font($size) {
+  font-size: $size;
+  font-family: $font;
+  color: white; 
+  font-style: normal;
+  font-weight: 400;
+}
+
+
+@mixin font2($size) {
+  font-size: $size;
+  font-family: $font2;
+  color: white;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin flex() {
+  display: flex;
+  justify-content: space-between; 
+}
+
+@mixin margins($top, $left, $right) {
+  margin-top: calc($index * $top);
+  margin-left: calc($index * $left);
+  margin-right: calc($index * $right);
+}
+
+@mixin button($fontSize, $height, $width) {
+  @include font2(calc($index * $fontSize));
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: $border;
+  transition: color 0.5s ease-out;
+  padding: $height $width;
+}
+
+@mixin backgroundImage($image-url){
+  background-image: url($image-url);
+  background-size: cover; 
+  background-position: center center; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+  object-fit: fill;
+}
+
+$base-font-size: 16px;
+
+@function pxToRem($px-value) {
+  @if type-of($px-value) != 'number' 
+  {
+    @error "Значение '#{$px-value}' должно быть числом (пикселями).";
+  }
+
+  $rem-value: ($px-value / $base-font-size) * 1rem;
+  @return $rem-value;
+}

@@ -1,0 +1,385 @@
+@use "./mixins.scss" as m;
+@use "sass:color";
+
+$vw-value: 1vw;
+$vh-value: 1vh;
+$index: calc(#{$vw-value} + #{$vh-value});
+
+$border-color: #555555;
+$text-color: #a0a0a0;
+$font-white: #ffffff;
+$bg-black: #000;
+$bg-gray: #2c2c2c;
+$white: #fff;
+$text-gray: #888;
+$border-radius: 20px;
+
+
+.bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; 
+
+  background: #121212;
+  background: linear-gradient(
+    135deg,
+    #121212 25%,
+    #1a1a1a 25%,
+    #1a1a1a 50%,
+    #121212 50%,
+    #121212 75%,
+    #1a1a1a 75%,
+    #1a1a1a
+  );
+  background-size: 40px 40px;
+  animation: move 4s linear infinite;
+}
+
+@keyframes move {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+
+
+.HeadWrap{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 10rem;
+
+  h1{
+    color: white;
+    @include m.font(calc(20 * 5));
+    font-size: 4rem;
+  }
+
+  canvas{
+    width: 40rem;
+    height: 1px;
+    background-color: white;
+  }
+}
+
+.MainWrap{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Wrap{
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 35px rgba(255, 102, 0, 0.4); }
+    50% { box-shadow: 0 0 55px rgba(255, 102, 0, 0.6); }
+    100% { box-shadow: 0 0 35px rgba(255, 102, 0, 0.4); }
+  }
+    
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #1C1C1C;
+  border-radius: 16px;
+  border: 4px solid rgb(255, 102, 0);
+  padding: 20px;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.LobbySetName{
+
+  position: relative;
+  margin-bottom: 4rem;
+  width: 50%;
+
+  .InputContainer {
+    position: relative; 
+    width: 100%;
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 2rem;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      outline: none;
+      background-color: transparent;
+      color: $text-color;
+      @include m.font2(calc($index * 1.2));
+
+      &:focus + .highlight {
+        width: 100%;
+      }
+    }
+
+    .highlight {
+      position: absolute;
+      bottom: 0; 
+      left: 0;
+      height: 2px;
+      width: 0;
+      background-color: rgb(255, 102, 0);
+      transition: all 0.7s ease;
+      pointer-events: none; 
+    }
+  }
+
+  .ErrorMessage {
+    color: #ff4d4d;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    position: absolute;
+  }
+}
+
+
+
+
+
+.PlayerCountButton {
+  display: flex;
+  align-items: center;
+  gap: 25px; 
+  margin-bottom: 4rem;
+
+
+  .AboutThis {
+    @include m.font2(calc($index * 1.2));
+    color: $text-color;
+    margin: 0;
+    line-height: 1.2;
+    max-width: 45%; 
+  }
+
+  display: flex;
+  align-items: center;
+
+  .ButtonMinus,
+  .NumInput,
+  .ButtonPlas {
+    background: transparent;
+    border: 1.5px solid $border-color;
+    color: $font-white;
+    height: 40px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .ButtonMinus {
+    width: 40px;
+    border-radius:  12px; 
+    border-right: none;
+    font-size: 24px;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  .NumInput {
+    width: 50px !important; 
+    border-left: 1.5px solid $border-color;
+    border-right: 1.5px solid $border-color;
+    font-size: 16px;
+    border-radius:  12px; 
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  .ButtonPlas {
+    width: 40px;
+    border-radius: 12px; 
+    border-left: none; 
+    font-size: 24px;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+}
+
+
+.DificultiWrap{
+  @include m.font2(calc($index * 1.2));
+  color: $text-color;
+  width: 45%; 
+  user-select: none;
+  position: relative; 
+  margin-left: -60px;  
+  margin-bottom: 4rem;
+
+  .Label {
+    color: $text-gray;
+    font-size: (calc($index * 1.5));;
+    margin-bottom: 8px;
+  }
+
+  .DropdownHeader {
+    background-color: #3f3d3d;
+    border: 1px solid #444;
+    border-radius: 20px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: $text-gray;
+
+    .Triangle {
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid $white; 
+      transition: transform 0.5s ease; 
+
+      &.TriangleOpen {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .DropdownList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+    background-color: $bg-gray; 
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 10;
+
+    .DropdownItem {
+      padding: 10px 20px;
+      color: $white;
+      cursor: pointer;
+
+      &:hover {
+        background-color: color.scale(#2c2c2c, $lightness: 12.085%);
+      }
+    }
+  }
+}
+
+
+.CreateBtn{
+  --main-color: rgb(221, 96, 28);
+  --main-bg-color: rgba(254, 99, 16, 0.36);
+  --pattern-color: rgba(213, 96, 46, 0.073);
+
+
+  filter: hue-rotate(0deg);
+
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  background: radial-gradient(
+      circle,
+      var(--main-bg-color) 0%,
+      rgba(0, 0, 0, 0) 95%
+    ),
+    linear-gradient(var(--pattern-color) 1px, transparent 1px),
+    linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+  background-size:
+    cover,
+    15px 15px,
+    15px 15px;
+  background-position:
+    center center,
+    center center,
+    center center;
+  border-image: radial-gradient(
+      circle,
+      var(--main-color) 0%,
+      rgba(0, 0, 0, 0) 100%
+    )
+    1;
+  border-width: 1px 0 1px 0;
+  color: var(--main-color);
+  padding: 1rem 3rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  transition: background-size 0.2s ease-in-out;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-size:
+    cover,
+    10px 10px,
+    10px 10px;
+    box-shadow: 0 0 15px 2px rgba(255, 102, 0, 0.6);
+    transform: translateY(-2px); 
+  }
+
+  &:active {
+    filter: hue-rotate(250deg);
+  }
+
+  &:disabled {
+  filter: grayscale(1);
+  cursor: not-allowed;
+  opacity: 0.6;
+  } 
+}
+
+.InputPassContent {
+  position: relative; 
+  display: flex;
+  align-items: center; 
+  width: 100%;
+  
+}
+
+.PasswordIconImg {
+  position: absolute;
+  right: 10px; 
+  color: #ccc; 
+  cursor: pointer;
+  z-index: 2;
+  bottom: 6px;
+}
+
+
+.InputPassContent input {
+  padding-right: 35px !important; 
+  width: 100%;
+}
+
+
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
